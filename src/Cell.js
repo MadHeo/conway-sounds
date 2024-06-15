@@ -1,21 +1,35 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import { timingSafeEqual } from 'crypto';
+import React, { Component, useEffect } from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import { timingSafeEqual } from "crypto";
+import { playSounds } from "./util/SoundPlayer.js";
 
 class Cell extends Component {
   render() {
     const cellClass = classNames({
-      'Cell': true,
-      'populated': this.props.populated
+      Cell: true,
+      populated: this.props.populated,
     });
+
     const cellStyle = {
       width: this.props.width,
       height: this.props.height || this.props.width,
+    };
+
+    const osTypes = ["sine", "square", "sawtooth", "triangle"];
+    if (this.props.populated) {
+      playSounds(this.props.num, 100, osTypes[0]);
     }
+
     return (
-      <div className={cellClass} onClick={this.props.onClick} style={cellStyle}>
-      </div>
+      <>
+        <div
+          className={cellClass}
+          onClick={this.props.onClick}
+          style={cellStyle}
+          id={this.props.num}
+        />
+      </>
     );
   }
 }

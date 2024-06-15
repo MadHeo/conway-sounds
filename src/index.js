@@ -45,8 +45,8 @@ const gliderPopulation = [
 ];
 ReactDOM.render(
   <GameOfLife
-    width={40}
-    height={40}
+    width={22}
+    height={22}
     startingPopulation={gliderPopulation}
     start={true}
     border="marquee"

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Cell from './Cell';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Cell from "./Cell";
 
-import './GameOfLife.css';
+import "./GameOfLife.css";
 
 class GameOfLife extends Component {
   constructor(props) {
@@ -14,21 +14,21 @@ class GameOfLife extends Component {
       started: props.start,
       worldSize: props.width * props.height,
       populatedCells: (props.startingPopulation || []).map((cell) => {
-        return cell[0] + (cell[1] * props.width);
+        return cell[0] + cell[1] * props.width;
       }),
       border: this.props.border,
     };
   }
 
   cellIsPopulated(populatedCells, x, y) {
-    let cellIndex = x + (y * this.state.width);
+    let cellIndex = x + y * this.state.width;
     return populatedCells.includes(cellIndex);
   }
 
   getAdjacentCellCoordinates(x, y) {
     let left = x - 1;
     let right = x + 1;
-    if (this.state.border === 'marquee') {
+    if (this.state.border === "marquee") {
       if (left < 0) {
         left = this.state.width - 1;
       }
@@ -41,7 +41,7 @@ class GameOfLife extends Component {
 
     let top = y - 1;
     let bottom = y + 1;
-    if (this.state.border === 'marquee') {
+    if (this.state.border === "marquee") {
       if (bottom >= this.state.height) {
         bottom = 0;
       }
@@ -51,9 +51,11 @@ class GameOfLife extends Component {
     } else {
       bottom = Math.min(this.state.height - 1, y + 1);
     }
-
     return {
-      top, right, bottom, left,
+      top,
+      right,
+      bottom,
+      left,
     };
   }
 
@@ -70,17 +72,20 @@ class GameOfLife extends Component {
     // list - this is definitely more efficient
     for (let x = 0; x < this.state.width; x++) {
       for (let y = 0; y < this.state.height; y++) {
-        const currentCellIndex = x + (y * this.state.width);
+        const currentCellIndex = x + y * this.state.width;
         let numberOfPopulatedNeighbours = 0;
         // let cellRight = x + 1 >= this.state.width ? 0 : x + 1;
         // let cellBelow = y + 1 >= this.state.height ? 0 : y + 1;
-        const { top, right, bottom, left } = this.getAdjacentCellCoordinates(x, y);
+        const { top, right, bottom, left } = this.getAdjacentCellCoordinates(
+          x,
+          y
+        );
         let xOptions = x === right ? [left, x] : [left, x, right];
         let yOptions = y === bottom ? [top, y] : [top, y, bottom];
 
         for (let nx of xOptions) {
           for (let ny of yOptions) {
-            let cellIndex = nx + (ny * this.state.width);
+            let cellIndex = nx + ny * this.state.width;
             let populated = populatedCells.includes(cellIndex);
             if ((nx !== x || ny !== y) && populated) {
               ++numberOfPopulatedNeighbours;
@@ -101,7 +106,10 @@ class GameOfLife extends Component {
 
   componentDidMount() {
     if (this.state.started) {
-      setTimeout(this.setState({ generation: this.state.generation + 1 }), 1000);
+      setTimeout(
+        this.setState({ generation: this.state.generation + 1 }),
+        1000
+      );
     }
   }
 
@@ -114,18 +122,24 @@ class GameOfLife extends Component {
     }
     if (this.state.started === true && !prevState.started) {
       setTimeout(() => {
-        this.setState({ generation: this.state.generation + 1 })
+        this.setState({ generation: this.state.generation + 1 });
       }, 100);
     }
     if (this.state.generation !== prevState.generation) {
       let populatedCellsToProgress = this.state.populatedCells;
-      for (let gen = prevState.generation + 1; gen <= this.state.generation; gen++) {
-        populatedCellsToProgress = this.getPopulatedCellsAfter(populatedCellsToProgress)
+      for (
+        let gen = prevState.generation + 1;
+        gen <= this.state.generation;
+        gen++
+      ) {
+        populatedCellsToProgress = this.getPopulatedCellsAfter(
+          populatedCellsToProgress
+        );
         this.setState({ populatedCells: populatedCellsToProgress });
       }
       if (this.state.started) {
         setTimeout(() => {
-          this.setState({ generation: this.state.generation + 1 })
+          this.setState({ generation: this.state.generation + 1 });
         }, 100);
       }
     }
@@ -134,7 +148,9 @@ class GameOfLife extends Component {
   toggleCell(cellIndexValue) {
     if (this.state.populatedCells.includes(cellIndexValue)) {
       this.setState({
-        populatedCells: this.state.populatedCells.filter(value => value !== cellIndexValue),
+        populatedCells: this.state.populatedCells.filter(
+          (value) => value !== cellIndexValue
+        ),
       });
     } else {
       this.setState({
@@ -149,6 +165,16 @@ class GameOfLife extends Component {
     });
   }
 
+  changeOsType() {
+    let osTypes = ["sine", "square", "sawtooth", "triangle"];
+    let length = osTypes.length;
+
+    if (length < 0) {
+      length = 3;
+    }
+    return osTypes[2];
+  }
+
   render() {
     const worldSize = this.state.width * this.state.height;
     let cells = [];
@@ -157,13 +183,20 @@ class GameOfLife extends Component {
       if (this.state.populatedCells.includes(i)) {
         props.populated = true;
       }
-      cells.push(<Cell key={"cell-" + i} onClick={(() => {
-        this.toggleCell(i);
-      }).bind(this)} {...props} />);
+      cells.push(
+        <Cell
+          key={"cell-" + i}
+          num={i}
+          onClick={(() => {
+            this.toggleCell(i);
+          }).bind(this)}
+          {...props}
+        />
+      );
     }
 
     const style = {
-      display: 'block',
+      display: "block",
       width: this.state.width * this.props.cellWidth,
     };
 
@@ -173,7 +206,10 @@ class GameOfLife extends Component {
           {cells}
         </div>
         <div className="ControlPanel">
-          <button onClick={this.toggleGame.bind(this)}>{this.state.started ? 'Pause' : 'Start'}</button>
+          <button onClick={this.toggleGame.bind(this)}>
+            {this.state.started ? "Pause" : "Start"}
+          </button>
+          {/* <button onClick={this.changeOsType}>Change Sound</button> */}
         </div>
       </div>
     );
@@ -186,15 +222,15 @@ GameOfLife.propTypes = {
   generation: PropTypes.number,
   start: PropTypes.bool,
   gridBehaviour: PropTypes.bool,
-  border: PropTypes.oneOf(['hard', 'marquee']),
+  border: PropTypes.oneOf(["hard", "marquee"]),
   cellWidth: PropTypes.number,
-}
+};
 
 GameOfLife.defaultProps = {
   generation: 0,
   start: false,
-  border: 'hard',
+  border: "hard",
   cellWidth: 20,
-}
+};
 
 export default GameOfLife;
