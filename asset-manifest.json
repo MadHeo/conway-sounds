@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.afefa36c.chunk.css",
-  "main.js": "/static/js/main.f384e830.chunk.js",
-  "main.js.map": "/static/js/main.f384e830.chunk.js.map",
-  "static/js/1.84048601.chunk.js": "/static/js/1.84048601.chunk.js",
-  "static/js/1.84048601.chunk.js.map": "/static/js/1.84048601.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/media/GameOfLife.css": "/static/media/skull.ae529f99.svg",
-  "static/css/main.afefa36c.chunk.css.map": "/static/css/main.afefa36c.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.d72026c2ae603978c87d0fca07ba15a6.js": "/precache-manifest.d72026c2ae603978c87d0fca07ba15a6.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "/conway-sounds/static/css/main.1da5bd5f.chunk.css",
+  "main.js": "/conway-sounds/static/js/main.0b85a82e.chunk.js",
+  "main.js.map": "/conway-sounds/static/js/main.0b85a82e.chunk.js.map",
+  "static/js/1.84048601.chunk.js": "/conway-sounds/static/js/1.84048601.chunk.js",
+  "static/js/1.84048601.chunk.js.map": "/conway-sounds/static/js/1.84048601.chunk.js.map",
+  "runtime~main.js": "/conway-sounds/static/js/runtime~main.0fb0c5ec.js",
+  "runtime~main.js.map": "/conway-sounds/static/js/runtime~main.0fb0c5ec.js.map",
+  "static/media/GameOfLife.css": "/conway-sounds/static/media/skull.ae529f99.svg",
+  "static/css/main.1da5bd5f.chunk.css.map": "/conway-sounds/static/css/main.1da5bd5f.chunk.css.map",
+  "index.html": "/conway-sounds/index.html",
+  "precache-manifest.5db95cf1e60cb14768699b5a5a68463e.js": "/conway-sounds/precache-manifest.5db95cf1e60cb14768699b5a5a68463e.js",
+  "service-worker.js": "/conway-sounds/service-worker.js"
 }
