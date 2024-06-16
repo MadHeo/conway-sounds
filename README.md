@@ -1,15 +1,22 @@
-# Conways's Game of Life in JavaScript using React
+# The sound that the Conway's Game of Life makes
 
-This is an implementation of [Conway's Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life) in JavaScript using the React library created as an exercise in behaviour-driven JavaScript development. Created by [@basicallydan](https://github.com/basicallydan).
+The Conway's game is philosophical and send a profound message. (at least for me)
 
-## The Game
+I was curious about the sounds the game made, and i made it.
 
-`yarn start`
+The sound that cells make is mysterious.
 
-## Tests
+# How it works
 
-`yarn test`
+1. Each cell was numbered.
+2. When a cell becomes black, the frequency(hz) matching the cell number is played.
+3. When you click the "Change Sound" button, the waveform of the frequency changes. It makes a different sound.
+4. I set the default sound to the lowest. If you can't hear it, turn up the volume.
 
-## Contributing
+# Deployment Address
 
-If you'd like to contribute, that's great and I encourage it - I do, however, also encourage reading the [contributing doc](https://github.com/conwaysgame/javascript/blob/master/contributing.md) first. The golden rule for contributing is that **you ensure that the tests are still passing before you make a pull request.**
+https://madheo.github.io/conway-sounds/
+
+# Conway Games referred to this
+
+https://github.com/conwaysgame/react-js
