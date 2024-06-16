@@ -16,9 +16,8 @@ class Cell extends Component {
       height: this.props.height || this.props.width,
     };
 
-    const osTypes = ["sine", "square", "sawtooth", "triangle"];
     if (this.props.populated) {
-      playSounds(this.props.num, 100, osTypes[0]);
+      playSounds(this.props.num * 2, 100, this.props.soundType);
     }
 
     return (

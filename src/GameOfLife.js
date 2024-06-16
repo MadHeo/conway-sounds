@@ -18,6 +18,10 @@ class GameOfLife extends Component {
       }),
       border: this.props.border,
     };
+    this.soundType = ["sine", "square", "sawtooth", "triangle"];
+    this.currentSound = "sine";
+    this.currentIndex = 0;
+    this.changeSoundType = this.changeSoundType.bind(this);
   }
 
   cellIsPopulated(populatedCells, x, y) {
@@ -165,14 +169,9 @@ class GameOfLife extends Component {
     });
   }
 
-  changeOsType() {
-    let osTypes = ["sine", "square", "sawtooth", "triangle"];
-    let length = osTypes.length;
-
-    if (length < 0) {
-      length = 3;
-    }
-    return osTypes[2];
+  changeSoundType() {
+    this.currentIndex = (this.currentIndex + 1) % this.soundType.length;
+    this.currentSound = this.soundType[this.currentIndex];
   }
 
   render() {
@@ -191,6 +190,7 @@ class GameOfLife extends Component {
             this.toggleCell(i);
           }).bind(this)}
           {...props}
+          soundType={this.currentSound}
         />
       );
     }
@@ -206,10 +206,14 @@ class GameOfLife extends Component {
           {cells}
         </div>
         <div className="ControlPanel">
-          <button onClick={this.toggleGame.bind(this)}>
+          <button
+            onClick={this.toggleGame.bind(this)}
+            className="button-margin"
+          >
             {this.state.started ? "Pause" : "Start"}
           </button>
-          {/* <button onClick={this.changeOsType}>Change Sound</button> */}
+          <button onClick={this.changeSoundType}>Change Sound</button>
+          <div>sound waveform : {this.currentSound}</div>
         </div>
       </div>
     );
