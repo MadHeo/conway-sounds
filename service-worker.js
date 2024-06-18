@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/conway-sounds/precache-manifest.1be401623166b402b18b58425d8f0a16.js"
+  "/conway-sounds/precache-manifest.fca849f55308a77318ef36e770fe642d.js"
 );
 
 workbox.clientsClaim();

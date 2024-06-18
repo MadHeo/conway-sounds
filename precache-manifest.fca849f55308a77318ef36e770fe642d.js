@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/conway-sounds/static/media/skull.ae529f99.svg"
   },
   {
-    "revision": "0f95014391c732f98b54ca2fb8b90e6a",
+    "revision": "4958b32b12f9908207c24bc4308a9f6f",
     "url": "/conway-sounds/index.html"
   }
 ];
