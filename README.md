@@ -1,3 +1,6 @@
+YouTube Link:
+https://www.youtube.com/watch?v=a7hQCvmAucI&ab_channel=%EC%BE%85%ED%82%A4%EC%BF%A4
+
 # The sound that the Conway's Game of Life makes
 
 The Conway's game is philosophical and send a profound message. (at least for me)
