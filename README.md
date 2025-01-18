@@ -1,5 +1,8 @@
-YouTube Link:
+YouTube Link : </br>
 https://www.youtube.com/watch?v=a7hQCvmAucI&ab_channel=%EC%BE%85%ED%82%A4%EC%BF%A4
+
+Play Game : </br>
+https://madheo.github.io/conway-sounds/
 
 # The sound that the Conway's Game of Life makes
 
